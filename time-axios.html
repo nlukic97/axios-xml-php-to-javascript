@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML</title>
+</head>
+<body>
+<p id="timestamp"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+<script>
+    setInterval(function(){
+        axios.get('./index.php')
+            .then(function(response){
+                console.log(response)
+                var time = response.data;
+                document.getElementById('timestamp').textContent=time;
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    },1000)
+</script>
+
+</body>
+</html>
